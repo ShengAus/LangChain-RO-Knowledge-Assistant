@@ -13,6 +13,17 @@ It serves a browser UI at `/`, exposes `GET /health` and `POST /ask`, retrieves 
 - Optional OpenAI-compatible LLM answer generation
 - Pydantic request and response models
 
+## Screenshots
+
+### Browser Interface
+
+![Browser interface](IMG/use_case1.png)
+
+### Unsupported Question Refusal
+
+![Unsupported question refusal](IMG/fail_case.png)
+
+
 ## Quick Start
 
 ```powershell
@@ -61,34 +72,9 @@ APP_PORT=8000
 
 Serves the browser interface.
 
-### `GET /health`
-
-Returns:
-
-```json
-{
-  "status": "ok"
-}
-```
-
 ### `POST /ask`
 
-Request:
-
-```json
-{
-  "question": "What affects RO recovery?"
-}
-```
-
-Example response:
-
-```json
-{
-  "answer": "RO recovery is affected by several factors including feed water quality, fouling potential, scaling risk, hydraulic limits, and operating conditions.",
-  "sources": ["ro_design_notes.md", "ro_basics.md"]
-}
-```
+LLM will return the answer grounded on user questios and retrived docs.
 
 PowerShell example:
 
@@ -146,22 +132,6 @@ LangChain-RO-Knowledge-Assistant/
 - `app/config.py`: `.env`-backed settings
 - `data/*.md`: local RO knowledge base
 - `tests/test_assistant.py`: focused assistant behavior tests
-
-## Screenshots
-
-### Browser Interface
-
-![Browser interface](IMG/use_case1.png)
-
-### Unsupported Question Refusal
-
-![Unsupported question refusal](IMG/fail_case.png)
-
-## Testing
-
-```powershell
-.\.venv\Scripts\python.exe -m pytest tests/test_assistant.py
-```
 
 ## Limitations
 
