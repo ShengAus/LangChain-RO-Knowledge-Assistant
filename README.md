@@ -97,6 +97,16 @@ The retrieval path is intentionally simple and local.
 
 This keeps the behavior deterministic and easy to inspect on a small corpus.
 
+## Evaluation
+
+The `evals/` folder contains a deterministic LLM evaluation harness that can run without an API key:
+
+```powershell
+python -m evals.llm_eval
+```
+
+It covers retrieval quality, unsupported-answer refusal, the current no-external-tool-call contract, and prompt regression checks for grounded answering behavior.
+
 ## Project Structure
 
 ```text
@@ -131,6 +141,7 @@ LangChain-RO-Knowledge-Assistant/
 - `app/prompts.py`: prompt template used in LLM mode
 - `app/config.py`: `.env`-backed settings
 - `data/*.md`: local RO knowledge base
+- `evals/llm_eval.py`: deterministic evaluation harness for retrieval, refusal, tool-contract, and prompt-regression checks
 - `tests/test_assistant.py`: focused assistant behavior tests
 
 ## Limitations
